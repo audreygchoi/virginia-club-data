@@ -13,11 +13,11 @@ end
 Vagrant::Config.run do |config|
   config.vm.box = "ubuntu/trusty64"
   config.vm.box_url = "https://atlas.hashicorp.com/ubuntu/boxes/trusty64"
-  config.vm.host_name = "postgresql" 
+  config.vm.host_name = "postgresql"
 
   config.vm.share_folder "bootstrap", "/mnt/bootstrap", ".", :create => true
-  config.vm.provision :shell, :path => "Vagrant-setup/bootstrap.sh"
-  
+  config.vm.provision :shell, :path => "Vagrant-setup/setup_database.sh"
+
   # PostgreSQL Server port forwarding
   config.vm.forward_port 5432, 15432
 end
